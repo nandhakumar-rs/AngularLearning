@@ -1,0 +1,20 @@
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1"><a  [routerLink]= "['/home']" >Home</a></span>
+  <span class="navbar-brand mb-0 h1" ><a [routerLink] = "['/contacts']" [queryParams]="{edit:1}" fragment="education">contacts</a></span>
+</nav>
+
+<form [formGroup] = "form">
+  <input [formControlName] = "'username'" type="text" >
+  <p *ngIf=" form.get('username').dirty && form.get('username').errors?.check">Please enter the lastname</p>
+  <p *ngIf="form.get('username').dirty && form.get('username').errors?.check1">Please enter only alphabets</p>
+<button (click)="add()">+</button>
+<div [formArrayName] = "'mobile'" *ngFor="let mob of form.get('mobile').controls; let i=index">
+   <div  [formGroupName]="i">
+      <input formControlName = "name">
+   </div> 
+    <p *ngIf="form.get('mobile').controls.name.dirty && form.get('mobile').controls.name.errors?.check2">Please enter only Numbers</p>
+
+</div>  
+
+</form>
+<router-outlet></router-outlet>

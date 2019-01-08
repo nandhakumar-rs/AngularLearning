@@ -1,0 +1,3 @@
+<p>Parent : </p>
+<input type="text" [(ngModel)]="username"  >
+<app-child [name]="username"  (emitBind)="changeData($event)"></app-child>
